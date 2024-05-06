@@ -50,18 +50,38 @@
   Your browser does not support the audio element.
 </audio>
 
-<script>
-  var audio = document.getElementById("backgroundMusic");
-
-  // Play audio when the page loads
-  window.onload = function() {
-    audio.play();
-  };
-</script>
-
 <div class="floating-btn" onclick="toggleAudio()">
   <span id="playPauseIcon">&#10074;&#10074;</span>
-</div>
+</div
+
+<script>
+  var audio = document.getElementById("backgroundMusic");
+  var playPauseButton = document.getElementById("playPauseIcon");
+  var isPlaying = false; // Flag to track audio state
+
+  // Function to toggle play/pause
+  function toggleAudio() {
+    if (isPlaying) {
+      audio.pause();
+      playPauseButton.innerHTML = "&#9658;";
+    } else {
+      audio.play();
+      playPauseButton.innerHTML = "&#10074;&#10074;";
+    }
+    isPlaying = !isPlaying; // Toggle the flag
+  }
+
+  // Function to simulate double-click on page load
+  window.onload = function() {
+    var floatingBtn = document.getElementById("floatingBtn");
+    setTimeout(function() {
+      floatingBtn.click(); // First click
+      setTimeout(function() {
+        floatingBtn.click(); // Second click
+      }, 200); // Adjust delay as needed
+    }, 200); // Adjust delay as needed
+  };
+</script>
 
 <script>
   var audio = document.getElementById("backgroundMusic");
