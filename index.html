@@ -52,16 +52,15 @@
 
 <script>
   var audio = document.getElementById("backgroundMusic");
-  var played = false;
-
-  window.addEventListener("scroll", function() {
-    if (!played) {
+  var observer = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) {
       audio.play();
-      played = true;
+      observer.disconnect(); // Stop observing once audio starts playing
     }
   });
-</script>
 
+  observer.observe(document.body);
+</script>
 
 
         <!-- Spinner Start -->
