@@ -46,11 +46,11 @@
 
     <body data-bs-spy="scroll" data-bs-target="#navBar" id="weddingHome">
 <audio id="backgroundMusic" autoplay loop>
-  <source src="song.mp3" type="audio/mpeg">
+  <source src="your_song.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
 
-<button class="floating-btn" onclick="toggleAudio()" style="position: fixed; bottom: 20px; right: 20px; background-color: #007bff; color: #fff; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 20px; text-align: center; cursor: pointer; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+<button class="floating-btn" onclick="toggleAudio()">
   <span id="playPauseIcon">&#9658;</span>
 </button>
 
@@ -67,7 +67,6 @@
       playPauseButton.innerHTML = "&#9658;";
     }
   }
-    
 </script>
         <!-- Spinner Start -->
         <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
