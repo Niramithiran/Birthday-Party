@@ -26,9 +26,42 @@
   </style>
 </head>
 <body>
-    <audio id="myAudio" loop>
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <audio id="myAudio" autoplay loop>
         <source src="silence.mp3" type="audio/mpeg">
     </audio>
+
+    <script>
+        // Wait for the DOM content to load
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById('myAudio');
+
+            // Check if the browser allows autoplay without user interaction
+            var playPromise = audio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(function() {
+                    // Autoplay started successfully
+                    // Unmute the audio
+                    audio.muted = false;
+                }).catch(function(error) {
+                    // Autoplay was prevented
+                    console.log('Autoplay prevented:', error);
+                    // You might want to handle this case, maybe display a UI element
+                    // to let the user manually start the audio
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
     
 </body>
 </html>
