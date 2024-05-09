@@ -42,35 +42,75 @@
 
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
+        <style>
+            /* Styles for the floating button */
+            .floating-btn {
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              background-color: red;
+              border-radius: 100%;
+              width: 54px;
+              height: 54px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+              z-index: 9999; /* Make the button appear on top of everything */
+            }
+          
+            #playPauseIcon {
+              color: white;
+            }
+            
+            /* Style for the iframe */
+            #songFrame {
+              position: fixed;
+              bottom: 0;
+              right: 0;
+              width: 300px; /* Adjust the width as needed */
+              height: 0;
+              border: none;
+              transition: height 0.5s ease;
+              z-index: 9998; /* Put iframe below the button */
+              overflow: hidden;
+            }
+            
+            #songFrame.opened {
+              height: 300px; /* Adjust the height as needed */
+            }
+          </style>
     </head>
 
     <body data-bs-spy="scroll" data-bs-target="#navBar" id="weddingHome">
-<audio id="myAudio">
-  <source src="song.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
 
-<div id="playButton" style="position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background-color: red; border-radius: 50%; color: white; font-size: 24px; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 9999;">▶</div>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        setTimeout(function() {
-            var audio = document.getElementById("myAudio");
-            audio.play();
-        }, 3000);
-    });
-
-    document.getElementById("playButton").addEventListener("click", function() {
-        var audio = document.getElementById("myAudio");
-        audio.play();
-    });
-</script>
-        <!-- Spinner Start -->
-        <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
-            <div class="spinner-grow text-primary" role="status"></div>
-        </div>
-        <!-- Spinner End -->
-
+      <!-- Floating button to toggle the song playback -->
+    <div class="floating-btn" id="toggleButton" onclick="toggleSong()">
+        <svg id="playPauseIcon" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+            <path d="M0 0h24v24H0z" fill="none" />
+        </svg>
+    </div>
+    
+    <!-- iframe containing the song -->
+    <iframe id="songFrame" src="song.html" allow="autoplay"></iframe>
+    
+    <script>
+    function toggleSong() {
+        var frame = document.getElementById('songFrame');
+        var button = document.getElementById('toggleButton');
+        
+        var song = frame.contentDocument.getElementById('myAudio');
+        
+        if (song.paused) {
+            song.play();
+            button.innerHTML = '<svg id="playPauseIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /><path d="M0 0h24v24H0z" fill="none" /></svg>';
+        } else {
+            song.pause();
+            button.innerHTML = '<svg id="playPauseIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" /><path d="M0 0h24v24H0z" fill="none" /></svg>';
+        }
+    }
+    </script>
 
         <!-- Navbar start -->
         <div class="container-fluid sticky-top px-0">
@@ -101,8 +141,6 @@
             </div>
         </div>
         <!-- Navbar End -->
-
-
 
         <!-- Carousel Start -->
         <div class="container-fluid carousel-header px-0">
@@ -414,25 +452,25 @@
                 <div class="wedding-date text-center bg-light p-5" style="border-style: double !important; border: 15px solid rgba(253, 93, 93, 0.5);">
                     <div class="wedding-date-content">
                         <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
-                            <h4 class="text-dark text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">May 26, 2024 , at 9:30 AM</h4>
+                            <h4 class="text-dark text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">May 26, 2024, at 9:30 AM</h4>
                         </div>
                         <h1 class="display-4">We Are Getting Married</h1>
                         <p class="text-dark fs-5">Sri Ram Mahal, Neyveli Arch gate, Kumbakonam Main Road, Cuddalore, the grand frame</p>
-                        <div class="d-flex align-items-center justify-content-center mb-5">
+                        <div class="d-flex align-items-center justify-content-center mb-5" id="countdown">
                             <div class="text-dark fs-2 me-4">
-                                <div>00</div>
+                                <div id="days">00</div>
                                 <span>Days</span>
                             </div>
                             <div class="text-dark fs-2 me-4">
-                                <div>00</div>
+                                <div id="hours">00</div>
                                 <span>Hours</span>
                             </div>
                             <div class="text-dark fs-2 me-4">
-                                <div>00</div>
+                                <div id="minutes">00</div>
                                 <span>Mins</span>
                             </div>
                             <div class="text-dark fs-2 me-0">
-                                <div>00</div>
+                                <div id="seconds">00</div>
                                 <span>Secs</span>
                             </div>
                         </div>
@@ -446,10 +484,39 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Wedding Date -->
 
-
+        <script>
+            // Set the date we're counting down to
+            var countDownDate = new Date("May 26, 2024 09:30:00").getTime();
+        
+            // Update the countdown every 1 second
+            var x = setInterval(function() {
+        
+                // Get today's date and time
+                var now = new Date().getTime();
+        
+                // Find the distance between now and the countdown date
+                var distance = countDownDate - now;
+        
+                // Calculate the days, hours, minutes, and seconds remaining
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+                // Display the countdown timer
+                document.getElementById("days").innerHTML = days;
+                document.getElementById("hours").innerHTML = hours;
+                document.getElementById("minutes").innerHTML = minutes;
+                document.getElementById("seconds").innerHTML = seconds;
+        
+                // If the countdown is over, display a message
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("countdown").innerHTML = "<h1 class='text-danger'>The Wedding Has Begun!</h1>";
+                }
+            }, 1000);
+        </script>
         <!-- Wedding Timeline start -->
         <div class="container-fluid wedding-timeline bg-secondary position-relative overflow-hidden py-5" id="weddingTimeline">
             <div class="position-absolute" style="top: 50%; left: -100px; transform: translateY(-50%); opacity: 0.5;">
@@ -461,6 +528,8 @@
             <div class="container py-5">
                 <div class="text-center mb-5">
                     <h1 class="display-4 text-white">Join us, as we embark on this voyage, hand in hande</h1>
+                    <img src="img/E-invitation_pic1.jpg" class="img-fluid" alt="Image">
+
                 </div>
                 <div class="position-relative wedding-content">
                     <div class="row g-4">
@@ -1094,22 +1163,24 @@
 
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15631.975876620965!2d79.54989639999998!3d11.62378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a54b0a357fec187%3A0xcccaae4140bbe346!2sSri%20Ram%20Mahal%20A%2FC!5e0!3m2!1sen!2sin!4v1714922195005!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-        <!-- Copyright Start -->
-        <div class="container-fluid copyright py-4" style="background-color: #333;">
+          <div class="container-fluid py-4" style="background-color: #F8F9FA;">
             <div class="container">
                 <div class="row g-4 align-items-center">
                     <div class="col-md-6 text-center text-md-start mb-md-0">
-                        <span class="text-light"><a href="#"><i class="fa fa-phone fa-2x text-success border border-2 border-white p-2"></i>  Call Us Anytime</a> +91 96770 92792</span>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end text-white">
-                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                        <!-- Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> -->
+                        <span class="text-dark">Contact:</span><br>
+                        <a href="tel:+919677092792" class="text-decoration-none">
+                            <img src="/img/phone.jpg" alt="WhatsApp" style="width: 50px; height: 50px;">
+                            <span class="text-success">Call Selva:</span> +91 96770 92792
+                        </a><br>
+                        <a href="https://api.whatsapp.com/send?phone=+919677092792" class="text-decoration-none">
+                            <img src="/img/what-icon.jpg" alt="WhatsApp" style="width: 50px; height: 50px;">
+                            <span class="text-success ms-2">WhatsApp Selva</span>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+        
         
         <!-- Copyright End -->
 
