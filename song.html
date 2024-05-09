@@ -10,32 +10,19 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      padding: 15px 25px; /* Increase padding for larger button */
-      font-size: 18px; /* Increase font size for better visibility */
-      border: none;
+      padding: 10px 20px; /* Adjust padding for larger button */
+      font-size: 16px; /* Adjust font size */
       background-color: #4CAF50; /* Green */
       color: white;
+      border: none;
+      border-radius: 5px; /* Add border radius for rounded corners */
       cursor: pointer;
     }
   </style>
 </head>
 <body>
-    <audio id="myAudio" loop>
+    <audio id="myAudio" autoplay loop>
         <source src="silence.mp3" type="audio/mpeg">
     </audio>
-
-    <button id="playButton">Play Song</button>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var audio = document.getElementById('myAudio');
-            var playButton = document.getElementById('playButton');
-
-            playButton.addEventListener('click', function() {
-                audio.play();
-                playButton.style.display = 'none'; // Hide the button after click
-            });
-        });
-    </script>
 </body>
 </html>
