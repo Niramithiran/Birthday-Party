@@ -4,64 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* Styles for the floating button */
-    .floating-btn {
+    /* Center the button */
+    #playButton {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: red;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      z-index: 9999; /* Make the button appear on top of everything */
-    }
-  
-    #playPauseIcon {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 15px 25px; /* Increase padding for larger button */
+      font-size: 18px; /* Increase font size for better visibility */
+      border: none;
+      background-color: #4CAF50; /* Green */
       color: white;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-   <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-    <audio id="myAudio" autoplay loop>
+    <audio id="myAudio" loop>
         <source src="silence.mp3" type="audio/mpeg">
     </audio>
 
+    <button id="playButton">Play Song</button>
+
     <script>
-        // Wait for the DOM content to load
         document.addEventListener('DOMContentLoaded', function() {
             var audio = document.getElementById('myAudio');
+            var playButton = document.getElementById('playButton');
 
-            // Check if the browser allows autoplay without user interaction
-            var playPromise = audio.play();
-
-            if (playPromise !== undefined) {
-                playPromise.then(function() {
-                    // Autoplay started successfully
-                    // Unmute the audio
-                    audio.muted = false;
-                }).catch(function(error) {
-                    // Autoplay was prevented
-                    console.log('Autoplay prevented:', error);
-                    // You might want to handle this case, maybe display a UI element
-                    // to let the user manually start the audio
-                });
-            }
+            playButton.addEventListener('click', function() {
+                audio.play();
+                playButton.style.display = 'none'; // Hide the button after click
+            });
         });
     </script>
-</body>
-</html>
-
-    
 </body>
 </html>
