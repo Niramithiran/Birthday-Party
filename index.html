@@ -45,24 +45,26 @@
     </head>
 
     <body data-bs-spy="scroll" data-bs-target="#navBar" id="weddingHome">
-<audio id="backgroundMusic" loop>
+<audio id="myAudio">
   <source src="song.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
 
+<div id="playButton" style="position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background-color: red; border-radius: 50%; color: white; font-size: 24px; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 9999;">▶</div>
+
 <script>
-  var audio = document.getElementById("backgroundMusic");
-  var observer = new IntersectionObserver(function(entries) {
-    if (entries[0].isIntersecting) {
-      audio.play();
-      observer.disconnect(); // Stop observing once audio starts playing
-    }
-  });
+    document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(function() {
+            var audio = document.getElementById("myAudio");
+            audio.play();
+        }, 3000);
+    });
 
-  observer.observe(document.body);
+    document.getElementById("playButton").addEventListener("click", function() {
+        var audio = document.getElementById("myAudio");
+        audio.play();
+    });
 </script>
-
-
         <!-- Spinner Start -->
         <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
             <div class="spinner-grow text-primary" role="status"></div>
