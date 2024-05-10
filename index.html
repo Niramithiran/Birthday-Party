@@ -175,8 +175,17 @@
                             isPlaying = true;
                         playIcon.style.display = "none";
                            pauseIcon.style.display = "block";
-                           button1.style.display="flex"
-                           button2.style.display="block"
+                           button1.style.display="flex";
+                           button2.style.display="block";
+
+                             var windowHeight = window.innerHeight;
+        var scrollValue = windowHeight * 0.8; // Adjust the percentage as needed (0.2 means scroll 20% of the window height)
+
+        // Scroll a bit after clicking the button
+        window.scrollBy({
+            top: scrollValue,
+            behavior: 'smooth'
+        });
                         }
                     </script>
 
