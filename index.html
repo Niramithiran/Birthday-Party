@@ -45,105 +45,71 @@
 
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
-        <style>
-            /* Styles for the floating button */
-            .floating-btn {
-              position: fixed;
-              bottom: 20px;
-              right: 20px;
-              background-color: red;
-              border-radius: 100%;
-              width: 54px;
-              height: 54px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              cursor: pointer;
-              z-index: 9999; /* Make the button appear on top of everything */
-            }
-          
-            #playPauseIcon {
-              color: white;
-            }
-            
-            /* Style for the iframe */
-            #songFrame {
-              position: fixed;
-              bottom: 0;
-              right: 0;
-              width: 300px; /* Adjust the width as needed */
-              height: 0;
-              border: none;
-              transition: height 0.5s ease;
-              z-index: 9998; /* Put iframe below the button */
-              overflow: hidden;
-            }
-            
-            #songFrame.opened {
-              height: 300px; /* Adjust the height as needed */
-            }
-          </style>
     </head>
 
     <body data-bs-spy="scroll" data-bs-target="#navBar" id="weddingHome">
 
-      <!-- Floating button to toggle the song playback -->
-    <div class="floating-btn" id="toggleButton" onclick="toggleSong()">
-        <svg id="playPauseIcon" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z" />
-            <path d="M0 0h24v24H0z" fill="none" />
-        </svg>
-    </div>
-    
-    <!-- iframe containing the song -->
-    <iframe id="songFrame" src="song.html" allow="autoplay"></iframe>
-    
-    <script>
-    function toggleSong() {
-        var frame = document.getElementById('songFrame');
-        var button = document.getElementById('toggleButton');
-        
-        var song = frame.contentDocument.getElementById('myAudio');
-        
-        if (song.paused) {
-            song.play();
-            button.innerHTML = '<svg id="playPauseIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /><path d="M0 0h24v24H0z" fill="none" /></svg>';
-        } else {
-            song.pause();
-            button.innerHTML = '<svg id="playPauseIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" /><path d="M0 0h24v24H0z" fill="none" /></svg>';
-        }
-    }
-    </script>
 
-        <!-- Navbar start -->
-        <div class="container-fluid sticky-top px-0">
-            <div class="container-fluid">
-                <div class="container px-0">
-                    <nav class="navbar navbar-light navbar-expand-xl" id="navBar">
-                        <a href="index.html" class="navbar-brand">
-                            <h4 class="text-primary display-6 fw-bold mb-0">SriRam <strong class="text-secondary">&</strong> Lavanya</h4>
-                        </a>
-                        <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                            <span class="fa fa-bars text-primary"></span>
-                        </button>
-                        <div class="collapse navbar-collapse py-3" id="navbarCollapse">
-                            <div class="navbar-nav mx-auto border-top">
-                                <a href="#weddingHome" class="nav-item nav-link active">Home</a>
-                                <a href="#weddingAbout" class="nav-item nav-link">About</a>
-                                <a href="#weddingStory" class="nav-item nav-link">Story</a>
-                                <a href="#weddingTimeline" class="nav-item nav-link">Timeline</a>
-                                <a href="#weddingGallery" class="nav-item nav-link">Gallery</a>
-                                <!-- <a href="#weddingRsvp" class="nav-item nav-link">RSVP</a> -->
-                            </div>
-                            <!-- <div class="d-flex align-items-center flex-nowrap pt-xl-0">
-                                <a href="#weddingRsvp" class="btn btn-primary btn-primary-outline-0 py-2 px-4 ms-4">Book Attendance</a>
-                            </div> -->
-                        </div>
-                    </nav>
+        <audio id="myAudio" loop>
+            <source src="silence.mp3" type="audio/mpeg">
+        </audio>
+        <div class="floating-btn" id="toggleButton" style="display: none;" onclick="toggleSong()">
+            <svg id="playPauseIcon" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24">
+                <path id="playIcon" d="M8 5v14l11-7z" />
+                <path id="pauseIcon" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" style="display: none;" />
+                <path d="M0 0h24v24H0z" fill="none" />
+            </svg>
+        </div>  
+        <script>
+            var audio = document.getElementById("myAudio");
+            var playPauseButton = document.getElementById("toggleButton");
+            var playIcon = document.getElementById("playIcon");
+            var pauseIcon = document.getElementById("pauseIcon");
+            var isPlaying = true;
+        
+            function toggleSong() {
+                if (isPlaying) {
+                    audio.pause();
+                    isPlaying = false;
+                    playIcon.style.display = "block";
+                    pauseIcon.style.display = "none";
+                } else {
+                    audio.play();
+                    isPlaying = true;
+                    playIcon.style.display = "none";
+                    pauseIcon.style.display = "block";
+                }
+            }
+        </script>
+
+      <!-- Navbar start -->
+<div class="container-fluid sticky-top px-0">
+    <div class="container-fluid">
+        <div class="container px-0">
+            <nav class="navbar navbar-light navbar-expand-xl" id="navBar">
+                <a href="index.html" class="navbar-brand">
+                    <h4 class="text-primary display-6 fw-bold mb-0">SriRam <strong class="text-secondary">&</strong> Lavanya</h4>
+                </a>
+                <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars text-primary"></span>
+                </button>
+                <div class="collapse navbar-collapse py-3" id="navbarCollapse">
+                    <div class="navbar-nav mx-auto border-top">
+                        <a href="#weddingHome" class="nav-item nav-link active">Home</a>
+                        <a href="#weddingAbout" class="nav-item nav-link">About</a>
+                        <a href="#weddingStory" class="nav-item nav-link">Story</a>
+                        <a href="#weddingTimeline" class="nav-item nav-link">Timeline</a>
+                        <a href="#weddingGallery" class="nav-item nav-link">Gallery</a>
+                        <!-- <a href="#weddingRsvp" class="nav-item nav-link">RSVP</a> -->
+                    </div>
+                    <!-- Add the button -->
+              
                 </div>
-            </div>
+            </nav>
         </div>
-        <!-- Navbar End -->
+    </div>
+</div>
+<!-- Navbar End -->
 
         <!-- Carousel Start -->
         <div class="container-fluid carousel-header px-0">
@@ -165,12 +131,68 @@
                                 <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-5" style="border-style: double;">
                                     <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">May 26 2024</h4>
                                 </div>
-                                <!-- <div class="d-flex align-items-center justify-content-center">
-                                    <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">RSVP Now</a>
-                                </div> -->
+                                                                <!-- Place the button -->
+<!-- Place the button -->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="wrap">
+    <div class="d-flex align-items-center justify-content-center pt-xl-0">
+        <button id="disappearButton"  class="disappearButton" onclick="toggleButton()">
+            <svg id="playPauseIcon" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24">
+                <path id="playIcon" d="M8 5v14l11-7z" />
+            </svg>
+        </button>
+    </div>
+</div>
                             </div>
+                            
                         </div>
+                        
                     </div>
+
+
+                    <script>
+                        function toggleButton() {
+                            var audio = document.getElementById("myAudio");
+                            var button = document.getElementById("disappearButton");
+                            var button3 = document.getElementById("disappearButton2");
+                            var button4 = document.getElementById("disappearButton1");
+
+                            var button1=document.getElementById("toggleButton");
+                            var button2=document.getElementById("playPauseIcon");
+                            button.style.animation = "shrink 0.2s ease-in-out forwards"; // Add the animation
+                            button3.style.animation = "shrink 0.2s ease-in-out forwards"; // Add the animation
+                            button4.style.animation = "shrink 0.2s ease-in-out forwards"; // Add the animation
+
+                            audio.play();
+                            isPlaying = true;
+                        playIcon.style.display = "none";
+                           pauseIcon.style.display = "block";
+                           button1.style.display="flex"
+                           button2.style.display="block"
+                        }
+                    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     <div class="carousel-item">
                         <img src="img/E-invitation-pic8.jpg" class="img-fluid" alt="Image">
                         <div class="carousel-caption">
@@ -182,9 +204,24 @@
                                 <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
                                     <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">May 25 2024 at 8.00 PM</h4>
                                 </div>
-                                <!-- <div class="d-flex align-items-center justify-content-center">
-                                    <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">RSVP Now</a>
-                                </div> -->
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <div class="wrap">
+                                    <div class="d-flex align-items-center justify-content-center pt-xl-0">
+                                        <button id="disappearButton2" class="disappearButton" onclick="toggleButton()">
+                                            <svg id="playPauseIcon" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24">
+                                                <path id="playIcon" d="M8 5v14l11-7z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -199,9 +236,24 @@
                                 <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
                                     <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">May 26 2024</h4>
                                 </div>
-                                <!-- <div class="d-flex align-items-center justify-content-center">
-                                    <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">RSVP Now</a>
-                                </div> -->
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <div class="wrap">
+                                    <div class="d-flex align-items-center justify-content-center pt-xl-0">
+                                        <button id="disappearButton1" class="disappearButton" class="button" onclick="toggleButton()">
+                                            <svg id="playPauseIcon" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24">
+                                                <path id="playIcon" d="M8 5v14l11-7z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
