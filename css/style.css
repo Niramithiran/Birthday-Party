@@ -542,7 +542,7 @@
     cursor: pointer;              /* Pointer cursor on hover */
     z-index: 9999;                 /* Ensure the button is on top of everything */
     box-shadow: 0 0 20px 10px rgba(10, 219, 38, 0.7); /* Glowing border effect */
-    animation: glowPulse 2s infinite; /* Animated glowing effect */
+    animation: glowPulse 5s infinite; /* Animated glowing effect */
 
 }
 
@@ -571,16 +571,16 @@
 }
 @keyframes glowPulse {
     0% {
-        box-shadow: 0 0 20px 10px rgba(136, 255, 0, 0.8);
-        background-color: rgb(240, 5, 83);         /* Background color */
+        box-shadow: 0 0 20px 10px rgba(255, 217, 0, 0.8);
+        background-color: rgb(156, 223, 214);         /* Background color */
     }
     50% {
-        box-shadow:  0 0 20px 10px rgb(89, 0, 255);
-        background-color: rgb(60, 240, 5);         /* Background color */
+        box-shadow:  0 0 20px 10px rgb(231, 122, 167);
+        background-color: rgb(235, 64, 21);         /* Background color */
     }
     100% {
-        box-shadow:  0 0 20px 10px rgba(255, 0, 0, 0.8);
-        background-color: rgb(5, 9, 240);         /* Background color */
+        box-shadow:  0 0 20px 10px rgba(240, 4, 114, 0.8);
+        background-color: rgb(91, 230, 28);         /* Background color */
 
     }
 }
