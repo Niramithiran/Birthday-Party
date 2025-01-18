@@ -526,24 +526,61 @@
     }
 }
 
+/* Floating Button Styles */
+/* Floating Button Styles */
 .floating-btn {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: red;
-    border-radius: 100%;
-    width: 54px;
-    height: 54px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    z-index: 9999; /* Make the button appear on top of everything */
-  }
+    background-color: red;         /* Background color */
+    border-radius: 50%;            /* Make it a circle */
+    width: 80px;                   /* Increased size for better visibility */
+    height: 80px;                  /* Increased size for better visibility */
+    display: flex;                 /* Flexbox for centering content */
+    justify-content: center;       /* Horizontally center the icon */
+    align-items: center;           /* Vertically center the icon */
+    cursor: pointer;              /* Pointer cursor on hover */
+    z-index: 9999;                 /* Ensure the button is on top of everything */
+    box-shadow: 0 0 10px 4px rgba(10, 219, 38, 0.7); /* Glowing border effect */
+    animation: glowPulse 2s infinite; /* Animated glowing effect */
 
-  #playPauseIcon {
-    color: white;
-  }
+}
+
+/* Hover Effect with Glow */
+.floating-btn:hover {
+    transform: scale(1.1);                    /* Slightly enlarge the button */
+    background-color: #e64a19;                /* Darker shade when hovered */
+    box-shadow: 0 0 15px 8px rgba(255, 0, 0, 0.8); /* Stronger glowing effect */
+}
+
+/* Icon Styles */
+#playPauseIcon {
+    transition: opacity 0.3s ease; /* Smooth transition for visibility */
+}
+
+/* Initially show play icon */
+#playIcon {
+    display: block;
+    box-shadow: 0 0 8px 2px rgba(255, 0, 0, 0.8); /* Constant glowing effect around play icon */
+}
+
+/* Initially hide pause icon */
+#pauseIcon {
+    display: none;
+    box-shadow: 0 0 8px 2px rgba(255, 0, 0, 0.8); /* Constant glowing effect around pause icon */
+}
+@keyframes glowPulse {
+    0% {
+        box-shadow: 0 0 10px 2px rgba(136, 255, 0, 0.8);
+    }
+    50% {
+        box-shadow: 0 0 20px 6px rgb(89, 0, 255);
+    }
+    100% {
+        box-shadow: 0 0 10px 2px rgba(255, 0, 0, 0.8);
+    }
+}
+
 
   .centered-image {
     display: block;
