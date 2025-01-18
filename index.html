@@ -58,14 +58,29 @@
     <audio id="myAudio" loop>
         <source src="silence.mp3" type="audio/mpeg">
     </audio>
-    <div class="floating-btn" id="toggleButton" style="display: none;" onclick="toggleSong()">
-        <svg id="playPauseIcon" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24">
-            <path id="playIcon" d="M8 5v14l11-7z" />
+   
+
+    <div class="floating-btn" id="toggleButton" onclick="toggleSong()">
+        <svg id="playPauseIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path id="playIcon" d="M8 5v14l11-7z" style="fill: currentColor;" />
             <path id="pauseIcon" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" style="display: none;" />
             <path d="M0 0h24v24H0z" fill="none" />
         </svg>
     </div>
     <script>
+         function toggleSong() {
+        if (isPlaying) {
+            audio.pause();
+            isPlaying = false;
+            playIcon.style.display = "block";
+            pauseIcon.style.display = "none";
+        } else {
+            audio.play();
+            isPlaying = true;
+            playIcon.style.display = "none";
+            pauseIcon.style.display = "block";
+        }
+    }
         var audio = document.getElementById("myAudio");
         var playPauseButton = document.getElementById("toggleButton");
         var playIcon = document.getElementById("playIcon");
