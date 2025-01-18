@@ -67,19 +67,7 @@
         </svg>
     </div>
     <script>
-         function toggleSong() {
-        if (isPlaying) {
-            audio.pause();
-            isPlaying = false;
-            playIcon.style.display = "block";
-            pauseIcon.style.display = "none";
-        } else {
-            audio.play();
-            isPlaying = true;
-            playIcon.style.display = "none";
-            pauseIcon.style.display = "block";
-        }
-    }
+         
         var audio = document.getElementById("myAudio");
         var playPauseButton = document.getElementById("toggleButton");
         var playIcon = document.getElementById("playIcon");
