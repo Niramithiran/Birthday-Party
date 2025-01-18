@@ -103,8 +103,7 @@
                     <div class="collapse navbar-collapse py-3" id="navbarCollapse">
                         <div class="navbar-nav mx-auto border-top">
                             <a href="#weddingHome" class="nav-item nav-link active">Home</a>
-                            <a href="#weddingAbout" class="nav-item nav-link">About</a>
-                            <a href="#weddingStory" class="nav-item nav-link">Venue</a>
+                            <a href="#weddingVenue" class="nav-item nav-link">Venue</a>
                             <a href="#weddingTimeline" class="nav-item nav-link">Timeline</a>
                             <a href="#weddingGallery" class="nav-item nav-link">Gallery</a>
                             <!-- <a href="#weddingRsvp" class="nav-item nav-link">RSVP</a> -->
@@ -241,17 +240,17 @@
 
 
         <!-- Gallery Start -->
-        <div class="container-fluid gallery position-relative py-5" id="babyImages">
+        <div class="container-fluid gallery position-relative py-5" id="weddingGallery">
             <div class="container position-relative py-5">
                 <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
                     <h1 class="display-2 text-dark">Images of the Celebration Baby</h1>
                     <p class="fs-5 text-dark">Cherish the moments with our little one through these beautiful pictures.</p>
                 </div>
-                <div id="imageContainer" class="row g-4">
+                <div id="imageContainer" class="row g-4" style="display: none;">
                     <!-- Initially empty, images will load on button click -->
                 </div>
                 <div class="text-center mt-4">
-                    <button id="loadImagesButton" class="btn btn-primary btn-lg">Load Images</button>
+                    <button id="loadImagesButton" class="btn btn-primary btn-lg">Show Images</button>
                 </div>
             </div>
         </div>
@@ -275,8 +274,10 @@
                 const loadCount = 4; // Number of images to load per click
                 const fragment = document.createDocumentFragment();
         
-                for (let i = 0; i < loadCount; i++){
+                for (let i = 0; i <  images.length; i++){
                             if (currentIndex >= images.length) {
+                                imageContainer.style.display = "";
+
                         loadImagesButton.disabled = true;
                         loadImagesButton.textContent = "No More Images";
                         break;
@@ -319,7 +320,7 @@
                     <br>
 
 
-                    <div class="text-center">
+                    <div class="text-center" id="weddingVenue">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.8170272291427!2d80.18943647585664!3d12.919478716017316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d564f33d721%3A0x4496d6f4d9ffccd0!2sKamsala%20mini%20hall!5e0!3m2!1sen!2sin!4v1737215492283!5m2!1sen!2sin" width="600" height="450" style="border:0; max-width: 100%; display: block; margin: 0 auto;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     
@@ -332,8 +333,10 @@
                                         <img src="img/phone-message_5603702.png" alt="WhatsApp" style="width: 50px; height: 50px;">
                                         <span class="text-success">Call Mohan:</span> +91 97912 77684
                                     </a><br>
+                                    <br>
+                                    <br>
                                     <a href="https://api.whatsapp.com/send?phone=+9197912 77684" class="text-decoration-none">
-                                        <img src="img/whatsapp.png" alt="WhatsApp" style="width: 50px; height: 50px;">
+                                        <img src="img/whatsapp.png" alt="WhatsApp" style="width: 40px; height: 50px;">
                                         <span class="text-success ms-2">WhatsApp Mohan</span>
                                     </a>
                                 </div>
