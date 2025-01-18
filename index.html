@@ -1,66 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You!</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f9f7f4; /* Light beige background */
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            padding: 30px;
-        }
-        .header h1 {
-            font-size: 36px;
-            color: #5c3d1e; /* Dark brownish color */
-            margin: 0;
-            font-weight: bold;
-        }
-        .main-content {
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
-        .main-content p {
-            font-size: 18px;
-            color: #5c3d1e; /* Dark brownish color */
-            line-height: 1.6;
-            margin: 10px 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .footer p {
-            color: #5c3d1e; /* Dark brownish color */
-            font-size: 14px;
-            margin-top: 30px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-    </style>
+    <title>Niramithran's 1st Birthday Invitation</title>
+    <meta name="description"
+        content="Join us in celebrating the 1st birthday of Niramithran, son of Mr. Mohan & Mrs. Kalavani! You're cordially invited to the celebration on February 4, 2025.">
+
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="Niramithran's 1st Birthday Invitation">
+    <meta itemprop="description"
+        content="Join us in celebrating the 1st birthday of Niramithran, son of Mr. Mohan & Mrs. Kalavani! You're cordially invited to the celebration on February 4, 2025.">
+    <meta itemprop="image" content="https://example.com/img/invitation.png">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://example.com">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Niramithran's 1st Birthday Invitation">
+    <meta property="og:description"
+        content="Join us in celebrating the 1st birthday of Niramithran, son of Mr. Mohan & Mrs. Kalavani! You're cordially invited to the celebration on February 4, 2025.">
+    <meta property="og:image" content="/img/Invitation.jpg">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Niramithran's 1st Birthday Invitation">
+    <meta name="twitter:description"
+        content="Join us in celebrating the 1st birthday of Niramithran, son of Mr. Mohan & Mrs. Kalavani! You're cordially invited to the celebration on February 4, 2025.">
+    <meta name="twitter:image" content="https://example.com/img/invitation.png">
+
+    <title>Niramithran's 1st Birthday Invitation</title>
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;500;600&family=Petit+Formal+Script&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
 </head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>Thank You!</h1>
-        </div>
-        <div class="main-content">
-            <p>Dear Friends and Family,</p>
-            <p>We want to express our heartfelt thanks for your presence and blessings on our special day.</p>
-            <p>Your love and support mean everything to us, and we are so grateful to have shared this joyous occasion with you.</p>
-            <p>With heartfelt appreciation,</p>
-            <p>Sriram & Lavanya</p>
-        </div>
-        <img src="img/8183434.jpg" alt="Thank You Image" style="width: 400px; border-radius: 10px;">
-        <div class="footer">
-            <p>&copy; 2024 All Rights Reserved</p>
+
+
+<body data-bs-spy="scroll" data-bs-target="#navBar" id="weddingHome">
+
+
+    <audio id="myAudio" loop>
+        <source src="silence.mp3" type="audio/mpeg">
+    </audio>
+    <div class="floating-btn" id="toggleButton" style="display: none;" onclick="toggleSong()">
+        <svg id="playPauseIcon" xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24">
+            <path id="playIcon" d="M8 5v14l11-7z" />
+            <path id="pauseIcon" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" style="display: none;" />
+            <path d="M0 0h24v24H0z" fill="none" />
+        </svg>
+    </div>
+    <script>
+        var audio = document.getElementById("myAudio");
+        var playPauseButton = document.getElementById("toggleButton");
+        var playIcon = document.getElementById("playIcon");
+        var pauseIcon = document.getElementById("pauseIcon");
+        var isPlaying = true;
+
+        function toggleSong() {
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                playIcon.style.display = "block";
+                pauseIcon.style.display = "none";
+            } else {
+                audio.play();
+                isPlaying = true;
+                playIcon.style.display = "none";
+                pauseIcon.style.display = "block";
+            }
+        }
+    </script>
+
+    <!-- Navbar start -->
+    <div class="container-fluid sticky-top px-0">
+        <div class="container-fluid">
+            <div class="container px-0">
+                <nav class="navbar navbar-light navbar-expand-xl" id="navBar">
+                    <a href="index3.html" class="navbar-brand">
+                        <h4 class="text-primary display-6 fw-bold mb-0">Birtday<strong class="text-secondary"></strong>
+                            Party</h4>
+                    </a>
+                    <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars text-primary"></span>
+                    </button>
+                    <div class="collapse navbar-collapse py-3" id="navbarCollapse">
+                        <div class="navbar-nav mx-auto border-top">
+                            <a href="#weddingHome" class="nav-item nav-link active">Home</a>
+                            <a href="#weddingAbout" class="nav-item nav-link">About</a>
+                            <a href="#weddingStory" class="nav-item nav-link">Venue</a>
+                            <a href="#weddingTimeline" class="nav-item nav-link">Timeline</a>
+                            <a href="#weddingGallery" class="nav-item nav-link">Gallery</a>
+                            <!-- <a href="#weddingRsvp" class="nav-item nav-link">RSVP</a> -->
+                        </div>
+                        <!-- Add the button -->
+
+                    </div>
+                </nav>
+            </div>
         </div>
     </div>
+    <!-- Navbar End -->
+    <img src="img/Invitation.jpg" class="img-fluid" alt="Image">
+
+    <!-- Carousel Start -->
+    
+
+    <!-- Hello! Start -->
+    <div class="container-fluid position-relative py-5" id="weddingAbout">
+        <div class="position-absolute" style="top: -35px; right: 0;">
+            <img src="img/tamp-bg-1.png" class="img-fluid" alt="">
+        </div>
+        <div class="position-absolute" style="top: -10px; left: 0; transform: rotate(150deg);">
+            <img src="img/tamp-bg-1.png" class="img-fluid" alt="">
+        </div>
+        <div class="container position-relative py-5">
+            <div class="mx-auto text-center mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+                <h1 class="text-primary display-1">You're Invited!</h1>
+                <h4 class="text-dark mb-0">Join us to celebrate a special birthday</h4>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row g-4 align-items-center">
+                        <!-- Birthday Star Section -->
+                        <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.3s">
+                            <div class="d-flex">
+                                <div class="text-end my-auto pe-4">
+                                    <h3 class="text-primary mb-3">Niramithran</h3>
+                                    <p class="text-dark mb-0" style="line-height: 30px;">
+                                        Son of Mr. Mohan & Mrs. Kalavani<br>
+                                        Celebrating his 1st Birthday!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Heart Divider -->
+                        <div class="col-lg-2 wow fadeIn" data-wow-delay="0.5s">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <i class="fa fa-birthday-cake fa-5x text-primary"></i>
+                            </div>
+                        </div>
+                        <!-- Event Details Section -->
+                        <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.3s">
+                            <div class="d-flex">
+                                <img src="img/Test.png" class="" alt="Birthday Cake">
+                                <div class="my-auto ps-4">
+                                    <h3 class="text-primary mb-3">Event Details</h3>
+                                    <p class="text-dark mb-0" style="line-height: 30px;">
+                                        <strong>Date:</strong> Feb 04, 2025<br>
+                                        <strong>Time:</strong> 6:00 PM onwards<br>
+                                        <strong>Venue:</strong> Kamsala mini Hall, Medavakkam<br>
+                                        <strong>Contact:</strong> +91 97912 77684
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hello! End -->
+
+    <!-- - Wedding Date -->
+    <div class="container-fluid wedding-date-bg position-relative py-5">
+        <!-- Wedding Timeline start -->
+        <div class="container-fluid wedding-timeline bg-secondary position-relative overflow-hidden py-5"
+            id="weddingTimeline">
+            <div class="position-absolute" style="top: 50%; left: -100px; transform: translateY(-50%); opacity: 0.5;">
+                <!-- <img src="img/wedding-bg.png" class="img-fluid" alt="" width="100" height="100"> -->
+            </div>
+            <div class="position-absolute"
+                style="top: 50%; right: -160px; transform: translateY(-50%); opacity: 0.5; rotate: 335deg;">
+                <img src="img/wedding-bg.png" class="img-fluid" alt="" width="100" height="100">
+            </div>
+            <div class="container py-5">
+                <div class="text-center mb-5">
+                    <h1 class="display-4 text-white">Let’s party as our bundle of joy turns ONE!</h1>
+                    <img src="img/krishna_with_flute_enhanced.png" class="img-fluid" alt="Image">
+
+                </div>
+                <div class="position-relative wedding-content">
+                    <div class="row g-4">
+                        <div class="col-6 col-md-6 col-xl-3 border border-bottom-0 border-end-0">
+                            <div class="text-center p-3 wow fadeIn" data-wow-delay="0.5s">
+                                <div class="mb-4 p-3 d-inline-flex">
+                                    <i class="fas fa-birthday-cake text-primary fa-3x"></i>
+                                </div>
+                                <p class="text-primary">Saturday, May 25, 2024 at 6:00 PM</p>
+                                <h3 class="text-dark">Cake Cutting</h3>
+                                <p class="text-dark">At Sunshine Party Hall, Main Street, Medavakkam, Chennai, Tamil Nadu 600100</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-6 col-xl-3 border border-top-0">
+                            <div class="text-center p-3 wow fadeIn" data-wow-delay="0.7s">
+                                <div class="mb-4 p-3 d-inline-flex">
+                                    <i class="fas fa-gift text-primary fa-3x"></i>
+                                </div>
+                                <p class="text-primary">Saturday, May 25, 2024 at 7:30 PM</p>
+                                <h3 class="text-dark">Dinner Party</h3>
+                                <p class="text-dark">At Sunshine Party Hall, Main Street, Medavakkam, Chennai, Tamil Nadu 600100</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <br>
+                    <br>
+                    <br>
+                    <div class="card-buttons mt-30 text-center">
+                        <a href="https://maps.app.goo.gl/DEAG4MkfGsAfKdb76" class="btn card-btn1" target="_blank"
+                            style="background-color: red; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">View
+                            on Map</a>
+                    </div>
+                    <div class="position-absolute heart-circle " style="bottom: 0; left: -18px;">
+                        <div class="border border-2 border-primary rounded-circle p-1 bg-secondary"></div>
+                    </div>
+                    <div class="position-absolute heart-circle" style="top: 18px; right: -17px;">
+                        <div class="border border-2 border-primary rounded-circle p-1 bg-secondary"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Wedding Timeline End -->
+
+
+        <!-- Gallery Start -->
+        <div class="container-fluid gallery position-relative py-5" id="babyImages">
+            <div class="container position-relative py-5">
+                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+                    <h1 class="display-2 text-dark">Images of the Celebration Baby</h1>
+                    <p class="fs-5 text-dark">Cherish the moments with our little one through these beautiful pictures.</p>
+                </div>
+                <div id="imageContainer" class="row g-4">
+                    <!-- Initially empty, images will load on button click -->
+                </div>
+                <div class="text-center mt-4">
+                    <button id="loadImagesButton" class="btn btn-primary btn-lg">Load Images</button>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            const images = [
+                        "img/IMG-20250117-WA0006.jpg",
+                        "img/IMG-20250117-WA0007.jpg",
+                        "img/IMG-20250117-WA0008.jpg",
+                        "img/IMG-20250117-WA0005.jpg",
+                        "img/IMG-20250117-WA0004.jpg",
+                        "img/Image.png",
+                        "img/IMG-20250117-WA0003.jpg",
+                        "img/Bossimg.jpg",
+
+
+
+            ];
+        
+            let currentIndex = 0; // Start with no images loaded
+            const loadImagesButton = document.getElementById('loadImagesButton');
+            const imageContainer = document.getElementById('imageContainer');
+        
+            function loadImages() {
+                const loadCount = 4; // Number of images to load per click
+                const fragment = document.createDocumentFragment();
+        
+                for (let i = 0; i < loadCount; i++){
+                            if (currentIndex >= images.length) {
+                        loadImagesButton.disabled = true;
+                        loadImagesButton.textContent = "No More Images";
+                        break;
+                    }
+        
+                    const col = document.createElement('div');
+                    col.className = 'col-md-6 col-lg-4 col-xl-3 wow fadeInUp';
+                    col.setAttribute('data-wow-delay', '0.2s');
+        
+                    const galleryItem = `
+                        <div class="gallery-item">
+                            <div class="gallery-img">
+                                <img class="img-fluid w-100" src="${images[currentIndex]}" alt="Celebration Baby">
+                            </div>
+                        </div>`;
+                    col.innerHTML = galleryItem;
+                    fragment.appendChild(col);
+        
+                    currentIndex++;
+                }
+        
+                imageContainer.appendChild(fragment);
+            }
+        
+            loadImagesButton.addEventListener('click', loadImages);
+        
+            // Initial Load
+            loadImages();
+        </script>
+        
+        
+    </div>
+
+
+                    <br>
+                    <br>
+
+                    <br>
+
+                    <br>
+
+
+                    <div class="text-center">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.8170272291427!2d80.18943647585664!3d12.919478716017316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d564f33d721%3A0x4496d6f4d9ffccd0!2sKamsala%20mini%20hall!5e0!3m2!1sen!2sin!4v1737215492283!5m2!1sen!2sin" width="600" height="450" style="border:0; max-width: 100%; display: block; margin: 0 auto;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    
+                    <div class="container-fluid py-4" style="background-color: #F8F9FA;">
+                        <div class="container text-center">
+                            <div class="row g-4 align-items-center justify-content-center">
+                                <div class="col-md-6">
+                                    <span class="text-dark">Contact:</span><br>
+                                    <a href="tel:+919677092792" class="text-decoration-none">
+                                        <img src="img/phone-message_5603702.png" alt="WhatsApp" style="width: 50px; height: 50px;">
+                                        <span class="text-success">Call Mohan:</span> +91 97912 77684
+                                    </a><br>
+                                    <a href="https://api.whatsapp.com/send?phone=+9197912 77684" class="text-decoration-none">
+                                        <img src="img/whatsapp.png" alt="WhatsApp" style="width: 50px; height: 50px;">
+                                        <span class="text-success ms-2">WhatsApp Mohan</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+                    <script src="lib/wow/wow.min.js"></script>
+                    <script src="lib/easing/easing.min.js"></script>
+                    <script src="lib/waypoints/waypoints.min.js"></script>
+                    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+
+                    <!-- Template Javascript -->
+                    <script src="js/main.js"></script>
 </body>
+
 </html>
